@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <p id="location">Loading... </p>
+
+        <button onclick="copy()">COPY</button>
+        <script>
+            locationEl = document.getElementById("location");    
+            
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition((position)=>{
+                   locationEl.textContent =  `${position.coords.latitude} - ${position.coords.longitude}`
+                })
+            } else {
+                locationEl.textContent =  "Cannot get your location"                
+            }
+
+            copy = ()=>{
+                navigator.clipboard.writeText(locationEl.textContent).then(() => {
+                    alert(`copies successfully - ${locationEl.textContent}`);
+                }, () => {
+                    alert("copy failed");
+                });
+            }
+        </script>
+    </body>
+</html>
