@@ -8,7 +8,7 @@
             
             if ('geolocation' in navigator) {
                 navigator.geolocation.getCurrentPosition((position)=>{
-                   locationEl.textContent =  `${position.coords.latitude} - ${position.coords.longitude}`
+                   locationEl.textContent =  `${position.coords.latitude} ${position.coords.longitude}`
                 })
             } else {
                 locationEl.textContent =  "Cannot get your location"                
